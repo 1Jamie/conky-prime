@@ -7,8 +7,9 @@ Linux system monitor utilizing Conky and Lua with a modern/futuristic design
 To operate this requires:
 ```
 Conky		apt install conky-all
-gawk		apt install gawk
-lua		apt install lua-5.1
+Gawk		apt install gawk
+Lua		apt install lua-5.1
+Cairo		apt install libcairo2-dev
 ```
 
 ## Usage
