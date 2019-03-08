@@ -1,13 +1,16 @@
 # conky-prime
 
-Linux system monitor utilizing Conky and Lua
+Linux system monitor utilizing Conky and Lua with a modern/futuristic design
+![conky-prime example](https://drive.google.com/file/d/1Nh-duv0OnRCPhmIC34c6Ge5iRGlmVJOb/view?usp=sharing)
 
 ## Required packages
 
 To operate this requires:
--Conky		apt install conky-all
--gawk		apt install gawk
--lua		apt install lua-5.1
+```
+Conky		apt install conky-all
+gawk		apt install gawk
+lua		apt install lua-5.1
+```
 
 ## Usage
 
