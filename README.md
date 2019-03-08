@@ -1,7 +1,7 @@
 # conky-prime
 
 Linux system monitor utilizing Conky and Lua with a modern/futuristic design
-![conky-prime example](https://postimg.cc/3kn6D53m)
+[![conky-prime=examle.png](https://i.postimg.cc/W4vPCTKW/works-jan.png)](https://postimg.cc/3kn6D53m)
 
 ## Required packages
 
