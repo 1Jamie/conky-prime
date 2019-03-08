@@ -1,0 +1,100 @@
+background = no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+# prevent flickering
+double_buffer yes
+
+# Window specifications #
+own_window_type panel
+own_window yes
+own_window_transparent yes
+own_window_hints undecorated,above,sticky,skip_taskbar,skip_pager
+own_window_argb_visual yes
+border_inner_margin 0
+border_outer_margin 0
+
+minimum_size 335 1080
+maximum_width 335
+
+alignment tr
+gap_x 35
+gap_y 35
+
+# Graphics settings #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# Text settings #
+use_xft yes
+xftfont caviar dreams:size=10
+xftalpha 0.9
+
+default_color FFFFFF
+
+# Lua Load #
+lua_load /home/charja13/.conky/conky_dashboard.lua
+lua_draw_hook_pre clock_rings
+TEXT
+${voffset 15}${font caviar dreams:size=48}${alignr}${time %H}:${time %M}${font}
+${alignr}___________________________
+${alignr}${color FFFFFF}${font caviar dreams:size=38}${time %e} ${time %b}${font}   
+
+
+${color FFFFFF}${goto 170}${voffset 65}${cpu cpu0}%
+${color FFFFFF}${goto 170}CPU
+
+${color FFFFFF}${goto 170}${voffset 45}${memperc}%
+${color FFFFFF}${goto 170}RAM
+
+
+${goto 50}${color FFFFFF}${font caviar dreams:size=10}Uptime: ${uptime_short}
+${goto 50}${color FFFFFF}${font caviar dreams:size=10}Processes: ${processes} 
+${goto 50}${color FFFFFF}${font caviar dreams:size=10}Running: ${running_processes}
+
+
+
+
+${goto 140}${font Arial:bold:size=8}${color grey74}TOP PROCESSES ${color grey74}
+${goto 130}${color white}$font${top name 1}${alignr}${top cpu 1} %
+${goto 130}${color white}$font${top name 2}${alignr}${top cpu 2} %
+${goto 130}${color white}$font${top name 3}${alignr}${top cpu 3} %
+${goto 130}${color white}$font${top name 4}${alignr}${top cpu 4} %
+${goto 130}${color white}$font${top name 5}${alignr}${top cpu 5} %
+${goto 130}${color white}$font${top name 6}${alignr}${top cpu 6} %
+${goto 130}${color white}$font${top name 4}${alignr}${top cpu 7} %
+${goto 130}${color white}$font${top name 5}${alignr}${top cpu 8} %
+${goto 130}${color white}$font${top name 6}${alignr}${top cpu 9} %
+
+
+
+
+#only uncommnet 1 incoming and 2 outgoing on ubuntu 18.10, any more and it will cause constant freezes in conky due to portmon having fun with the new network manager in 18.10
+
+${alignr} Incoming Connections     
+         
+${color FFFFFF}${goto 110}${voffset -38}${fs_used_perc /}%
+${color FFFFFF}${goto 110}SSD${alignr} ___________________________
+${goto 200}${tcp_portmon 1 32767 rhost 0} ${alignr} ${tcp_portmon 1 32767 lservice 0}
+#${goto 200}${tcp_portmon 1 32767 rhost 1} ${alignr} ${tcp_portmon 1 32767 lservice 1}
+#${goto 200}${tcp_portmon 1 32767 rhost 2} ${alignr} ${tcp_portmon 1 32767 lservice 2}
+#${goto 200}${tcp_portmon 1 32767 rhost 3} ${alignr} ${tcp_portmon 1 32767 lservice 3}
+#${goto 200}${tcp_portmon 1 32767 rhost 4} ${alignr} ${tcp_portmon 1 32767 lservice 4}
+
+
+
+${color FFFFFF}${goto 75}NET${alignr} Outgoing Connections     
+${color FFFFFF}${goto 40}${if_up enx3c18a0d1c5e4}Down: ${downspeed enx3c18a0d1c5e4}${endif} ${alignr} ___________________________
+${color FFFFFF}${goto 59}${if_up enx3c18a0d1c5e4}Up: ${upspeed enx3c18a0d1c5e4} ${endif}${goto 150}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $1}' | head -n 1}${alignr}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $5}' | head -n 1 }
+${goto 150}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $1}' | head -n 2 | tail -n 1}${alignr}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $5}' | head -n 2 | tail -n 1}
+${goto 150}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $1}' | head -n 3 | tail -n 1}${alignr}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $5}' | head -n 3 | tail -n 1}
+${goto 150}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $1}' | head -n 4 | tail -n 1}${alignr}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $5}' | head -n 4 | tail -n 1}
+${goto 150}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $1}' | head -n 5 | tail -n 1}${alignr}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $5}' | head -n 5 | tail -n 1}
+
+
