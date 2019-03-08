@@ -39,7 +39,7 @@ xftalpha 0.9
 default_color FFFFFF
 
 # Lua Load #
-lua_load /home/charja13/.conky/conky_dashboard.lua
+lua_load ~/.conky/conky_dashboard.lua
 lua_draw_hook_pre clock_rings
 TEXT
 ${voffset 15}${font caviar dreams:size=48}${alignr}${time %H}:${time %M}${font}
