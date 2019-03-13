@@ -174,6 +174,67 @@ settings_table = {
         start_angle=45,
         end_angle=90
     },
+--for more cores if needed uncomment
+--[[
+ {
+        name='cpu',
+        arg='cpu5',
+        max=50,
+        bg_colour=0xFFFFFF,
+        bg_alpha=0.4,
+        fg_colour=0xFFFFFF,
+        fg_alpha=0.8,
+        x=65, y=310,
+        radius=66,
+        thickness=5,
+        start_angle=95,
+        end_angle=130
+    },
+
+    {
+        name='cpu',
+        arg='cpu6',
+        max=100,
+        bg_colour=0xFFFFFF,
+        bg_alpha=0.4,
+        fg_colour=0xFFFFFF,
+        fg_alpha=0.8,
+        x=65, y=310,
+        radius=74,
+        thickness=5,
+        start_angle=95,
+        end_angle=130
+    },
+    {
+        name='cpu',
+        arg='cpu7',
+        max=100,
+        bg_colour=0xFFFFFF,
+        bg_alpha=0.4,
+        fg_colour=0xFFFFFF,
+        fg_alpha=0.8,
+        x=65, y=310,
+        radius=82,
+        thickness=5,
+        start_angle=95,
+        end_angle=130
+    },
+    {
+        name='cpu',
+        arg='cpu8',
+        max=100,
+        bg_colour=0xFFFFFF,
+        bg_alpha=0.4,
+        fg_colour=0xFFFFFF,
+        fg_alpha=0.8,
+        x=65, y=310,
+        radius=90,
+        thickness=5,
+        start_angle=95,
+        end_angle=130
+    },
+]]--
+
 --memmory/storage
     {
         name='memperc',

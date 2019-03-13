@@ -1,14 +1,36 @@
 # conky-prime
-
 Linux system monitor utilizing Conky and Lua with a modern/futuristic design
+
+## Featured in display/overlay
+
+### Time
+Time and date both digital and analog with dials and circle indicators
+
+### Network
+Network ip addresses for both Ethernet and Wifi (need to set proper interface names)
+Domain name (full)
+Current network speeds with dial monitor
+Current open connections (Incoming and Outgoing)
+
+### CPU/Memory/Storage
+CPU overall package usage and individual core/thread usage in dial monitor (up to 8 threads currently) 
+Ram usage in percent with dial monitor
+System uptime
+Number of processes
+Number of running processes
+Current top processes and percent usage on cores/threads (top 9)
+Current usage of storage space, percent and dial
+
+[![conky-prime=examle.png](https://i.postimg.cc/W4vPCTKW/works-jan.png)](https://postimg.cc/3kn6D53m)
 
 ## Required packages
 
-To operate this requires:
+To operate, this requires:
 ```
+net tools	apt install net-tools
 Conky		apt install conky-all
 Gawk		apt install gawk
-Lua		apt install lua-5.1
+Lua		apt install lua5.1
 Cairo		apt install libcairo2-dev
 ```
 
@@ -20,5 +42,6 @@ which you can find yours by using ifconfig and using the appropriate interface y
 After configuring everything you can start the system monitor overlay by running conky in a terminal,
 or if you want to run it in the background conky -d to run it as a daemon. 
 
+if you have more cores/threads than shown on ui you can go into /.conky/conky_dashboard.lua and uncomment the lines (lines  177-236)  for cores/threads 5-8
 
-[![conky-prime=examle.png](https://i.postimg.cc/W4vPCTKW/works-jan.png)](https://postimg.cc/3kn6D53m)
+
