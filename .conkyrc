@@ -1,10 +1,11 @@
+
 background = no
 update_interval 1
 
 cpu_avg_samples 2
 net_avg_samples 2
 
-override_utf8_locale yes
+override_utf8_locale no
 
 # prevent flickering
 double_buffer yes
@@ -42,27 +43,26 @@ default_color FFFFFF
 lua_load ~/.conky/conky_dashboard.lua
 lua_draw_hook_pre clock_rings
 TEXT
-${voffset 15}${font caviar dreams:size=48}${alignr}${time %H}:${time %M}${font}
+#${exec curl wttr.in | head -n 7 > weather.txt && iconv -f weather.txt -o weather1.txt -t UTF-8 && cat weather1.txt}
+
+${voffset 27}${font caviar dreams:size=48}${alignr}${time %H}:${time %M}${font}
 ${alignr}___________________________
 ${alignr}${color FFFFFF}${font caviar dreams:size=38}${time %e} ${time %b}${font}  
  
-
 ${alignr}${font underline:size=12}${exec hostname -f}  
-${alignr}${exec ifconfig | grep netmask | awk '{print $2}'| cut -f2 -d: | head -n 1}   
-${alignr}${exec ifconfig | grep netmask | awk '{print $2}'| cut -f2 -d: | tail -n 1}  ${font}  
-${color FFFFFF}${goto 170}${voffset 23}${cpu cpu0}%
-${color FFFFFF}${goto 170}CPU
-
-${color FFFFFF}${goto 170}${voffset 45}${memperc}%
-${color FFFFFF}${goto 170}RAM
+${alignr}${exec lscpu | grep "Model name" | awk ' { print $5} '}  
+${alignr}${exec ifconfig | grep netmask | awk '{print $2}'| cut -f2 -d: | head -n 1}  
+${alignr}${exec ifconfig | grep netmask | awk '{print $2}'| cut -f2 -d: | tail -n 1}  
+${voffset 10}${color FFFFFF}${goto 50}CPU
+${color FFFFFF}${goto 27}${freq}MHz
+${color FFFFFF}${goto 50}${cpu cpu0}%
+${color FFFFFF}${goto 254}${voffset 17}RAM
+${color FFFFFF}${goto 218}${mem}/16gb
+${color FFFFFF}${goto 257}${memperc}%
 
 ${goto 50}${color FFFFFF}${font caviar dreams:size=10}Uptime: ${uptime_short}
 ${goto 50}${color FFFFFF}${font caviar dreams:size=10}Processes: ${processes} 
 ${goto 50}${color FFFFFF}${font caviar dreams:size=10}Running: ${running_processes}
-
-
-
-
 
 ${goto 140}${font Arial:bold:size=8}${color grey74}TOP PROCESSES ${color grey74}
 ${goto 130}${color white}$font${top name 1}${alignr}${top cpu 1} %
@@ -76,26 +76,27 @@ ${goto 130}${color white}$font${top name 5}${alignr}${top cpu 8} %
 ${goto 130}${color white}$font${top name 6}${alignr}${top cpu 9} %
 
 
-
-
 #only uncommnet 1 incoming and 2 outgoing on ubuntu 18.10, any more and it will cause constant freezes in conky due to portmon having fun with the new network manager in 18.10
+#${alignr} Incoming Connections     
+#         
+#${color FFFFFF}${goto 110}${voffset -38}${fs_used_perc /}%
 
-${alignr} Incoming Connections     
-         
-${color FFFFFF}${goto 110}${voffset -38}${fs_used_perc /}%
-${color FFFFFF}${goto 110}SSD${alignr} ___________________________
+${color FFFFFF}${goto 165}Incoming Connections
+${color FFFFFF}${alignr}  ___________________________
+
 ${goto 200}${tcp_portmon 1 32767 rhost 0} ${alignr} ${tcp_portmon 1 32767 lservice 0}
 #${goto 200}${tcp_portmon 1 32767 rhost 1} ${alignr} ${tcp_portmon 1 32767 lservice 1}
 #${goto 200}${tcp_portmon 1 32767 rhost 2} ${alignr} ${tcp_portmon 1 32767 lservice 2}
 #${goto 200}${tcp_portmon 1 32767 rhost 3} ${alignr} ${tcp_portmon 1 32767 lservice 3}
-#${goto 200}${tcp_portmon 1 32767 rhost 4} ${alignr} ${tcp_portmon 1 32767 lservice 4}
+${voffset 3}${goto 45}SSD
+${goto 13}${fs_free /}/92Gib
+${goto 45}${fs_free_perc}%
 
 
-
-${color FFFFFF}${goto 75}NET${alignr} Outgoing Connections     
-${color FFFFFF}${goto 40}${if_up enx3c18a0d1c5e4}Down: ${downspeed enx3c18a0d1c5e4}${endif} ${alignr} ___________________________
-${color FFFFFF}${goto 59}${if_up enx3c18a0d1c5e4}Up: ${upspeed enx3c18a0d1c5e4} ${endif}${goto 150}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $1}' | head -n 1}${alignr}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $5}' | head -n 1 }
-${goto 150}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $1}' | head -n 2 | tail -n 1}${alignr}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $5}' | head -n 2 | tail -n 1}
+${alignr} Outgoing Connections     
+${color FFFFFF}${goto 40}${if_up enx8cae4ce5b1e6}Down: ${downspeed enx8cae4ce5b1e6}${endif} ${alignr} ___________________________
+${color FFFFFF}${goto 59}${if_up enx8cae4ce5b1e6}Up: ${upspeed enx8cae4ce5b1e6} ${endif}${goto 150}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $1}' | head -n 1}${alignr}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $5}' | head -n 1 }
+${color FFFFFF}${goto 75}NET${goto 150}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $1}' | head -n 2 | tail -n 1}${alignr}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $5}' | head -n 2 | tail -n 1}
 ${goto 150}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $1}' | head -n 3 | tail -n 1}${alignr}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $5}' | head -n 3 | tail -n 1}
 ${goto 150}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $1}' | head -n 4 | tail -n 1}${alignr}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $5}' | head -n 4 | tail -n 1}
 ${goto 150}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $1}' | head -n 5 | tail -n 1}${alignr}${exec netstat -antp | awk -e '/ESTABLISHED/ { print $5}' | head -n 5 | tail -n 1}

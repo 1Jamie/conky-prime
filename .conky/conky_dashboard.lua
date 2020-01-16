@@ -259,8 +259,8 @@ settings_table = {
         bg_alpha=0.4,
         fg_colour=0xFFFFFF,
         fg_alpha=0.8,
-        x=60, y=830,
-        radius=40,
+        x=60, y=820,
+        radius=55,
         thickness=10,
         start_angle=-90,
         end_angle=180
@@ -273,15 +273,15 @@ settings_table = {
         bg_alpha=0.3,
         fg_colour=0xFFFFFF,
         fg_alpha=0.0,
-        x=60, y=830,
-        radius=40,
+        x=60, y=820,
+        radius=55,
         thickness=5,
         start_angle=180,
         end_angle=270
     }, 
     {
         name='downspeedf',
-        arg='enx3c18a0d1c5e4',
+        arg='enx8cae4ce5b1e6',
         max=100,
         bg_colour=0xFFFFFF,
         bg_alpha=0.5,
@@ -295,7 +295,7 @@ settings_table = {
     },
         {
         name='upspeedf',
-        arg='enx3c18a0d1c5e4',
+        arg='enx8cae4ce5b1e6',
         max=100,
         bg_colour=0xFFFFFF,
         bg_alpha=0.5,
