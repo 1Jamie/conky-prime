@@ -21,7 +21,7 @@ Number of running processes
 Current top processes and percent usage on cores/threads (top 9)
 Current usage of storage space, percent and dial
 
-[![conky-prime=examle.png](https://i.postimg.cc/NfLDLDPq/Screenshot-from-2019-03-13-01-14-43.png))](https://postimg.cc/HVDXhwgB)
+[![conky-prime=examle.png](https://i.postimg.cc/7hmf0XkX/conky-prime.png)](https://postimg.cc/HVDXhwgB)
 
 ## Required packages
 
